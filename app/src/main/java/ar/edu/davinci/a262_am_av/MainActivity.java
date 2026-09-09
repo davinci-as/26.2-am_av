@@ -1,5 +1,6 @@
 package ar.edu.davinci.a262_am_av;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -13,11 +14,21 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+
     public void addContent(View view) {
         LinearLayout container = (LinearLayout) findViewById(R.id.container);
         for (int i = 0; i < 20; i++) {
             TextView genericText = new TextView(this);
             genericText.setText(String.format("Generic Text: %d", i));
+
+            genericText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+                    startActivity(intent);
+
+                }
+            });
             container.addView(genericText);
         }
     }

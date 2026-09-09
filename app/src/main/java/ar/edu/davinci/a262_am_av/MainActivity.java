@@ -21,10 +21,12 @@ public class MainActivity extends AppCompatActivity {
             TextView genericText = new TextView(this);
             genericText.setText(String.format("Generic Text: %d", i));
 
+            int finalI = i;
             genericText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+                    intent.putExtra("identificador", finalI);
                     startActivity(intent);
 
                 }

@@ -1,6 +1,9 @@
 package ar.edu.davinci.a262_am_av;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,14 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_details);
+
+        Intent intent = getIntent();
+        int identificador = intent.getIntExtra("identificador", 0);
+        Log.i("identificador", String.valueOf(identificador));
+        TextView idViewer = findViewById(R.id.id_viewer);
+        idViewer.setText(String.valueOf(identificador));
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

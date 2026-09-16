@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
                     intent.putExtra("identificador", finalI);
-                    startActivity(intent);
+                    startActivityForResult(intent, 1);
 
                 }
             });

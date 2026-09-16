@@ -3,6 +3,7 @@ package ar.edu.davinci.a262_am_av;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +13,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class DetailsActivity extends AppCompatActivity {
+
+    public void onClick(View v) {
+        Intent replayIntent = new Intent();
+        replayIntent.putExtra("newText", "20");
+        setResult(RESULT_OK, replayIntent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

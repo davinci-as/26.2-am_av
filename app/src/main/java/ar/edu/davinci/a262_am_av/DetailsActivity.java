@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -15,8 +16,10 @@ import androidx.core.view.WindowInsetsCompat;
 public class DetailsActivity extends AppCompatActivity {
 
     public void onClick(View v) {
+        EditText newTextValue = findViewById(R.id.newTextValue);
+        String newText = String.valueOf(newTextValue.getText());
         Intent replayIntent = new Intent();
-        replayIntent.putExtra("newText", "20");
+        replayIntent.putExtra("newText", newText);
         setResult(RESULT_OK, replayIntent);
         finish();
     }

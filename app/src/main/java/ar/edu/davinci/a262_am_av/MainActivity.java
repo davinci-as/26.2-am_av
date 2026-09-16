@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -14,6 +15,23 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final int UPDATE_ITEM_VALUE = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode != UPDATE_ITEM_VALUE) return;
+        if(resultCode != RESULT_OK) return;
+
+        if (data != null && !data.hasExtra("newText")) return;
+
+        String newText = data != null ? data.getStringExtra("newText") : "";
+
+        TextView demoText = findViewById(R.id.demoText);
+        demoText.setText(newText);
+
+    }
 
     public void addContent(View view) {
         LinearLayout container = (LinearLayout) findViewById(R.id.container);
@@ -27,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
                     intent.putExtra("identificador", finalI);
-                    startActivityForResult(intent, 1);
+                    startActivityForResult(intent, UPDATE_ITEM_VALUE);
 
                 }
             });

@@ -20,10 +20,13 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         Intent intent = getIntent();
-        int identificador = intent.getIntExtra("identificador", 0);
-        Log.i("identificador", String.valueOf(identificador));
-        TextView idViewer = findViewById(R.id.id_viewer);
-        idViewer.setText(String.valueOf(identificador));
+
+        if(intent.hasExtra("identificador")) {
+            int identificador = intent.getIntExtra("identificador", 0);
+            Log.i("identificador", String.valueOf(identificador));
+            TextView idViewer = findViewById(R.id.id_viewer);
+            idViewer.setText(String.valueOf(identificador));
+        }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

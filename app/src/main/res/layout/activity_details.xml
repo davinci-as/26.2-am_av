@@ -30,6 +30,12 @@
             android:inputType="text"
             android:text="" />
 
+        <ImageView
+            android:id="@+id/detailsImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <Button
             android:id="@+id/id_button"
             android:layout_width="wrap_content"

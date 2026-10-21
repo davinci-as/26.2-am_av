@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -37,6 +38,12 @@ public class DetailsActivity extends AppCompatActivity {
             Log.i("identificador", String.valueOf(identificador));
             TextView idViewer = findViewById(R.id.id_viewer);
             idViewer.setText(String.valueOf(identificador));
+
+            String image = "https://images.pexels.com/photos/9221307/pexels-photo-9221307.jpeg?_gl=1*1wi02ly*_ga*MTQxNDM2OTE0Mi4xNzkxOTQyNDA3*_ga_8JE65Q40S6*czE3OTE5NDI0MDYkbzEkZzAkdDE3OTE5NDI0MDYkajYwJGwwJGgw";
+            //revisar si tengo conexión a internet
+                //ejecución del worker
+                ImageView detailsImage = findViewById(R.id.detailsImage);
+                new ImageDownloader(detailsImage).execute(image);
         }
 
 

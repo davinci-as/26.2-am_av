@@ -3,11 +3,14 @@ package ar.edu.davinci.a262_am_av;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -41,15 +44,15 @@ public class ApiRequest extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        try {
-            JSONObject response = new JSONObject(s);
-            JSONArray results = (JSONArray) response.get("results");
-            JSONObject morthySmith = (JSONObject) results.get(0);
-            String name = (String) morthySmith.get("name");
-            Log.i("on-post", name);
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
+        /*JSONObject response = new JSONObject(s);
+        JSONArray results = (JSONArray) response.get("results");
+        JSONObject morthySmith = (JSONObject) results.get(0);
+        String name = (String) morthySmith.get("name");*/
+        Gson gson = new Gson();
+        ApiResponse response = gson.fromJson(s, ApiResponse.class);
+        ArrayList<Character> results = response.getResults();
+        Character mortySmith = results.get(0);
+        Log.i("on-post", String.valueOf(mortySmith.getGender()));
 
     }
 }

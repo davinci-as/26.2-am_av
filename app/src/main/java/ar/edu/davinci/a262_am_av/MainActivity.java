@@ -69,7 +69,12 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user = this.mAuth.getCurrentUser();
 
-        
+        if(user == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        } else {
+            //this.mAuth.signOut();
+        }
 
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
